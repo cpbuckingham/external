@@ -110,11 +110,12 @@
         </button>
       </div>
       <div class="modal-body">
-    <form action="/:id/event" method="put">
-       title: <input name="title" type="text" placeholder={{modal-title} /> <br /><br />
-       description: <input name="description" type="text" placeholder={{description}} /> <br /><br />
-       date: <input name="date" type="date" placeholder={{date}} /> <br /><br />
-       time: <input name="time" type="time" placeholder={{time}} /> <br /><br />
+    <form action="/event/edit?_method=PUT" method="post">
+            <input type="hidden" value="{{id}}" name="id">
+       title: <input name="title" type="text" /> <br /><br />
+       description: <input name="description" type="text" /> <br /><br />
+       date: <input name="date" type="date" /> <br /><br />
+       time: <input name="time" type="time" /> <br /><br />
        <br />
          </div>
       <div class="modal-footer">
@@ -126,7 +127,15 @@
   </div>
 </div>
                 </div>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Like</button>
+                   <p>Likes: {{ likes }}
+        <form method="POST" action="/event/like">
+        <input type="hidden" value="{{id}}" name="id">
+        <input type="submit" class="btn btn-sm btn-outline-secondary" value="Like">
+        </form>
+        <form method="POST" action="/event/unlike">
+        <input type="hidden" value="{{id}}" name="id">
+        <input type="submit" class="btn btn-sm btn-outline-danger"value="UN-Like">
+        </form>
               </div>
             </div>
           </div>
