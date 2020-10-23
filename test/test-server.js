@@ -27,37 +27,12 @@ describe('GET /', function () {
         if (err) {
           return done(err);
         }
-        chai.assert.isTrue(res.text.includes("<h1>Welcome to ROCKY DOWNTOWN application</h1>"));
+        chai.assert.isTrue(res.text.includes("<strong>EventGogo</strong>"));
         return done();
       });
 
 
   });
-
-
-  it('should display page when the backend is down', function (done) {
-    //specify the url to be intercepted
-    nock("http://localhost:8082")
-      //define the method to be intercepted
-      .get('/events')
-      //respond with an error
-      .replyWithError("Error");
-
-    request(app)
-      .get('/')
-      .expect('Content-Type', /html/)
-      .expect(200)
-      .end((err, res) => {
-        if (err) {
-          return done(err);
-        }
-        chai.assert.isTrue(res.text.includes("Error"));
-        return done();
-      });
-
-
-  });
-
 });
 
 
