@@ -174,7 +174,7 @@ app.post('/event/edit',
         // using an environment variable. Here, the variable is passed 
         // to npm start inside package.json:
         //  "start": "BACKEND_URL=http://localhost:8082 node server.js",
-        request.post(  // first argument: url + data + formats
+        request.put(  // first argument: url + data + formats
             {
                 url: SERVER + '/event/edit',  // the microservice end point for liking an event
                 body: req.body,  // content of the form
@@ -188,7 +188,7 @@ app.post('/event/edit',
             });
 
     }); 
-    
+
 // generic error handling
 app.use((err, req, res, next) => {
     console.error(err.stack);
